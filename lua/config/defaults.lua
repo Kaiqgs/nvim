@@ -2,6 +2,8 @@ local fn = vim.fn
 
 return {
   options = {
+    -- auto_save = true,
+    -- autoformat_active = false,
     backup = false, -- creates a backup file
     clipboard = "unnamedplus", -- keep in sync with the system clipboard
     completeopt = "menu,menuone,noselect", -- A comma separated list of options for Insert mode completion
@@ -21,7 +23,7 @@ return {
       tab = "| ",
       trail = "+",
       extends = ">",
-       precedes = "<",
+      precedes = "<",
       space = "·",
       nbsp = "␣",
     },
@@ -33,7 +35,7 @@ return {
     scrolloff = 3, -- Minimal number of screen lines to keep above and below the cursor
     sessionoptions = { "buffers", "curdir", "tabpages", "winsize" },
     shiftround = true, -- Round indent
-    shiftwidth = 2, -- the number of spaces inserted for each indentation
+    shiftwidth = 4, -- the number of spaces inserted for each indentation
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
     showtabline = 1, -- always show tabs; 0 never, 1 only if at least two tab pages, 2 always
     sidescrolloff = 5, -- The minimal number of columns to scroll horizontally
@@ -42,8 +44,8 @@ return {
     smartindent = true, -- Insert indents automatically
     splitbelow = true, -- force all horizontal splits to go below current window
     splitright = true, -- force all vertical splits to go to the right of current window
-    swapfile = true, -- enable/disable swap file creation
-    tabstop = 2, -- how many columns a tab counts for
+    swapfile = false, -- enable/disable swap file creation
+    tabstop = 4, -- how many columns a tab counts for
     termguicolors = true, -- set term gui true colors (most terminals support this)
     timeoutlen = 400, -- time to wait for a mapped sequence to complete (in milliseconds)
     ttimeoutlen = 0, -- Time in milliseconds to wait for a key code sequence to complete
@@ -82,7 +84,7 @@ return {
     -- https://github.com/zbirenbaum/copilot.lua
     copilot = {
       enable = true,
-      disable_autostart = true,
+      disable_autostart = false,
     },
     git = {
       -- which tool to use for handling git merge conflicts
@@ -95,7 +97,7 @@ return {
     },
     harpoon = {
       -- https://github.com/ThePrimeagen/harpoon
-      enable = false,
+      enable = true,
       key_mappings = function(harpoon)
         vim.keymap.set("n", "<leader>a", function()
           harpoon:list():append()
@@ -160,11 +162,11 @@ return {
       },
     },
     noice = {
-      enable = true, -- Noice heavily changes the Neovim UI ...
+      enable = false, -- Noice heavily changes the Neovim UI ...
     },
     oil = {
       --- https://github.com/stevearc/oil.nvim
-      enable = false,
+      enable = true,
       key_mappings = function()
         vim.keymap.set("n", "_", "<cmd>Oil<cr>", { desc = "Open oil" })
       end,
@@ -234,12 +236,12 @@ return {
         ".gradle/",
         ".idea/",
         ".vale/",
-        ".vscode/",
+        ".vscode/*",
         "__pycache__/*",
         "build/",
         "env/",
         "gradle/",
-        "node_modules/",
+        "node_modules/*",
         "smalljre_*/*",
         "target/",
         "vendor/*",

@@ -90,8 +90,8 @@ local M = {
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = false,
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
         }),
         -- TODO only when copilot is enabled
         ["<Tab>"] = cmp.mapping(function(fallback)

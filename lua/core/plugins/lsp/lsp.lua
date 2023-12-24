@@ -8,7 +8,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 require("utils.functions").on_attach(function(client, buffer)
-  require("core.plugins.lsp.keys").on_attach(client, buffer)
+  require("core.plugins.lsp.keys_alt").on_attach(client, buffer)
 end)
 
 for _, lsp in ipairs(conf.lsp_servers) do

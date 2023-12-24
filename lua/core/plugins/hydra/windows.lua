@@ -38,7 +38,7 @@ Hydra({
     },
   },
   mode = "n",
-  body = "<leader>w",
+  body = "<leader>wi",
   heads = {
     { "s", cmd("split"), opts },
     { "v", cmd("vsplit"), opts },

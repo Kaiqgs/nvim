@@ -148,3 +148,20 @@ api.nvim_create_autocmd(
     end,
   }
 )
+
+-- detect defold file extensions
+local defold_file_maps = {
+  c = { "vp", "fp" },
+  lua = { "script", "gui_script", "render_script", "editor_script" },
+}
+for lang, defold_correspondents in pairs(defold_file_maps) do
+  for _, file_ext in ipairs(defold_correspondents) do
+    if file_ext ~= "lua" then
+      print("new autocmd")
+      vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+        command = "set filetype=" .. lang,
+        pattern = { "*." .. file_ext },
+      })
+    end
+  end
+end
