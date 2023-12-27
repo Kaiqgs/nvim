@@ -4,6 +4,8 @@ local M = {
     event = "VeryLazy",
     dependencies = {
       "mfussenegger/nvim-dap-python",
+      "mxsdev/nvim-dap-vscode-js",
+      "jbyuki/one-small-step-for-vimkind",
       "leoluz/nvim-dap-go",
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
