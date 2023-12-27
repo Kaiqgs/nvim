@@ -191,7 +191,7 @@ return {
       -- https://github.com/nvim-telescope/telescope-fzf-native.nvim
       -- requires cmake and gcc toolchain
       fzf_native = {
-        enable = false,
+        enable = true,
       },
       -- which patterns to ignore in file switcher
       file_ignore_patterns = {

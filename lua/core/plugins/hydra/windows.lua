@@ -6,7 +6,7 @@ local function cmd(command)
 end
 
 local hint = [[
- Move    Size    Splits
+ Size   Move    Splits
  -----  ------  ---------
  ^ ^ _K_ ^ ^   ^ ^ _k_ ^ ^  _s_: horizontally
  _H_ ^ ^ _L_   _h_ ^ ^ _l_  _v_: vertically
@@ -38,7 +38,7 @@ Hydra({
     },
   },
   mode = "n",
-  body = "<leader>wi",
+  body = "<leader>w",
   heads = {
     { "s", cmd("split"), opts },
     { "v", cmd("vsplit"), opts },
@@ -46,15 +46,15 @@ Hydra({
     { "m", cmd("WindowsMaximize"), opts }, -- maximize current window
     -- window resizing
     { "=", cmd("wincmd =") },
-    { "k", cmd("wincmd +") },
-    { "j", cmd("wincmd -") },
-    { "h", cmd("wincmd <") },
-    { "l", cmd("wincmd >") },
+    { "H", cmd("wincmd +") },
+    { "J", cmd("wincmd -") },
+    { "K", cmd("wincmd <") },
+    { "L", cmd("wincmd >") },
     -- move window around
-    { "H", cmd("wincmd H") },
-    { "J", cmd("wincmd J") },
-    { "K", cmd("wincmd K") },
-    { "L", cmd("wincmd L") },
+    { "k", cmd("wincmd H") },
+    { "j", cmd("wincmd J") },
+    { "h", cmd("wincmd K") },
+    { "l", cmd("wincmd L") },
     -- rotate window
     { "r", cmd("wincmd r") },
     { "R", cmd("wincmd R") },
