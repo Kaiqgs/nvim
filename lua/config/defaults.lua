@@ -324,7 +324,7 @@ return {
   tools = {
     -- Formatter
     "black",
-    "prettier",
+    "prettierd",
     "stylua",
     "shfmt",
     -- Linter

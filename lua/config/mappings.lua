@@ -8,6 +8,7 @@ local map = vim.keymap.set
 -- map("n", "k", "i", { noremap = true })
 -- map("n", "l", "o", { noremap = true })
 
+-- Actions:
 map("n", "<bs>", "<c-^>'\"zz", { desc = "Toggle buffer" })
 map("n", "<tab>", "<Cmd>bprevious<cr>", { desc = "Previous buffer" })
 map("n", "<S-tab>", "<Cmd>bnext<cr>", { desc = "Next buffer" })
@@ -20,6 +21,14 @@ map("n", "<leader>q", "<Cmd>bd<cr>", { desc = "Close buffer" })
 
 --auto-save
 map("n", "<leader>as", "<Cmd>ASToggle<CR>", { desc = "Toggle [A]uto-[S]ave" })
+
+-- no-yanking
+map("n", "<leader>p", [["_dP]], { desc = "Paste without yanking" })
+map("n", "<leader>d", [["_d]], { desc = "Delete without yanking" })
+
+-- toggles
+map("n", "<leader>ta", "<Cmd>ASToggle<CR>", { desc =  "[T]oggle [A]uto-save"})
+map("n", "<leader>ts", utils.toggle_strip_space, {desc = "[T]oggle [S]trip Whitespace"})
 
 --diffview
 -- map("n", "<leader>go", require("diffview").open, { silent = true })

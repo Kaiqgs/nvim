@@ -51,6 +51,7 @@ local function configure_debuggers()
   require("core.plugins.dap.go").setup()
   require("core.plugins.dap.lua").setup()
   require("core.plugins.dap.typescript").setup()
+  require("core.plugins.dap.javascript").setup()
 end
 
 local function create_mapping()

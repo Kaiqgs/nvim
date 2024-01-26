@@ -1,9 +1,15 @@
+local javascript = require("core.plugins.dap.javascript")
+local utils_functions = require("utils.functions")
 local M = {
   setup = function()
+    local osname = vim.loop.os_uname().sysname
+    local is_windows = osname:find("Windows")
+    local debugger_path = "C:/Users/Kaique/Documents/Scripts/vscode-js-debug" and is_windows
+      -- or "/home/kags/vscode-js-debug"
+      or "~/3rdParty/vscode-js-debug"
     require("dap-vscode-js").setup({
       node_path = "node",
-      --TODO: remove hardcoded windows path
-      debugger_path = "C:/Users/Kaique/Documents/Scripts/vscode-js-debug",
+      debugger_path = utils_functions.get_vscode_js_debugger_path(),
     })
     local dap = require("dap")
     dap.configurations.typescript = {
@@ -22,6 +28,7 @@ local M = {
           "!**/node_modules/**",
         },
       },
+      javascript.bash_config(),
     }
   end,
 }

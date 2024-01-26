@@ -3,7 +3,12 @@ local api = vim.api
 --- Remove all trailing whitespace on save
 local TrimWhiteSpaceGrp = api.nvim_create_augroup("TrimWhiteSpaceGrp", { clear = true })
 api.nvim_create_autocmd("BufWritePre", {
-  command = [[:%s/\s\+$//e]],
+  callback = function()
+    if STRIP_WHITESPACE then
+      local command = [[:%s/\s\+$//e]]
+      vim.cmd(command)
+    end
+  end,
   group = TrimWhiteSpaceGrp,
 })
 
@@ -144,7 +149,7 @@ api.nvim_create_autocmd(
     pattern = { "*.txt", "*.md", "*.tex", "*.typ" },
     callback = function()
       vim.opt.spell = true
-      vim.opt.spelllang = "en,de"
+      vim.opt.spelllang = "en"
     end,
   }
 )

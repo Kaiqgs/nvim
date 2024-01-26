@@ -25,6 +25,15 @@ M.getOS = function()
   end
 end
 
+function M.get_vscode_js_debugger_path()
+  local osname = vim.loop.os_uname().sysname
+  local is_windows = osname:find("Windows")
+  local path_unix = "/home/kags/3rdParty/vscode-js-debug"
+  local debugger_path = "C:/Users/Kaique/Documents/Scripts/vscode-js-debug" and is_windows or path_unix
+  return debugger_path
+end
+
+
 --- Check if the minimum Neovim version is satisfied
 --- Expects only the minor version, e.g. "9" for 0.9.1
 ---@param version number
@@ -248,6 +257,16 @@ M.search_todos = function()
     local utils = require("utils.functions")
     utils.notify("No results found!", vim.log.levels.INFO, "Search TODOs")
   end
+end
+
+STRIP_WHITESPACE = false
+function M.toggle_strip_space()
+  STRIP_WHITESPACE = not STRIP_WHITESPACE
+  M.notify(
+    string.format("White space stripping %s", STRIP_WHITESPACE and "on" or "off"),
+    vim.log.levels.INFO,
+    "lsp.utils"
+  )
 end
 
 return M
