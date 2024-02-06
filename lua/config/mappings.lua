@@ -18,6 +18,8 @@ map("n", "<leader>f", vim.lsp.buf.format, { desc = "Format buffer" })
 map("n", "<leader>ww", "<Cmd>w!<cr>", { desc = "Write buffer" })
 map("n", "<leader>e", "<Cmd>Explore<cr>", { desc = "Open explore" })
 map("n", "<leader>q", "<Cmd>bd<cr>", { desc = "Close buffer" })
+map("n", "<leader>cf", "<Cmd>CloseFloatingWindows<cr>", { desc = "[C]lose [F]loating Windows" })
+map("n", "<leader>cw", "", { desc = "[C]urrent [W]orking Directory" })
 
 --auto-save
 map("n", "<leader>as", "<Cmd>ASToggle<CR>", { desc = "Toggle [A]uto-[S]ave" })
@@ -27,8 +29,8 @@ map("n", "<leader>p", [["_dP]], { desc = "Paste without yanking" })
 map("n", "<leader>d", [["_d]], { desc = "Delete without yanking" })
 
 -- toggles
-map("n", "<leader>ta", "<Cmd>ASToggle<CR>", { desc =  "[T]oggle [A]uto-save"})
-map("n", "<leader>ts", utils.toggle_strip_space, {desc = "[T]oggle [S]trip Whitespace"})
+map("n", "<leader>ta", "<Cmd>ASToggle<CR>", { desc = "[T]oggle [A]uto-save" })
+map("n", "<leader>ts", utils.toggle_strip_space, { desc = "[T]oggle [S]trip Whitespace" })
 
 --diffview
 -- map("n", "<leader>go", require("diffview").open, { silent = true })
@@ -44,11 +46,11 @@ map("n", "<leader>dq", vim.diagnostic.setloclist)
 map("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 map("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 map("n", "<leader>/", function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-    winblend = 10,
-    previewer = false,
-  }))
+    -- You can pass additional configuration to telescope to change theme, layout, etc.
+    require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+        winblend = 10,
+        previewer = false,
+    }))
 end, { desc = "[/] Fuzzily search in current buffer]" })
 
 map("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
@@ -58,55 +60,55 @@ map("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earc
 map("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 
 local function DM(m)
-  return string.format("DAP: %s", m)
+    return string.format("DAP: %s", m)
 end
 -- dap
 map("n", "<F4>", function()
-  require("dap").terminate()
+    require("dap").terminate()
 end, { desc = DM("Terminate") })
 
 map("n", "<F5>", function()
-  require("dap").continue()
+    require("dap").continue()
 end, { desc = "Continue" })
 map("n", "<F6>", function()
-  require("dap").step_over()
+    require("dap").step_over()
 end, { desc = " " })
 map("n", "<F7>", function()
-  require("dap").step_into()
+    require("dap").step_into()
 end)
 map("n", "<F8>", function()
-  require("dap").step_out()
+    require("dap").step_out()
 end)
 map("n", "<Leader>b", function()
-  require("dap").toggle_breakpoint()
+    require("dap").toggle_breakpoint()
 end)
 map("n", "<Leader>B", function()
-  require("dap").set_breakpoint()
+    require("dap").set_breakpoint()
 end)
 map("n", "<Leader>lp", function()
-  require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+    require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 end)
 map("n", "<Leader>dr", function()
-  require("dap").repl.open()
+    require("dap").repl.open()
 end)
 map("n", "<Leader>dl", function()
-  require("dap").run_last()
+    require("dap").run_last()
 end)
 map({ "n", "v" }, "<Leader>dh", function()
-  require("dap.ui.widgets").hover()
+    require("dap.ui.widgets").hover()
 end)
 map({ "n", "v" }, "<Leader>dp", function()
-  require("dap.ui.widgets").preview()
+    require("dap.ui.widgets").preview()
 end)
 map("n", "<Leader>df", function()
-  local widgets = require("dap.ui.widgets")
-  widgets.centered_float(widgets.frames)
+    local widgets = require("dap.ui.widgets")
+    widgets.centered_float(widgets.frames)
 end)
 map("n", "<Leader>do", function()
-  require("dapui").open()
+    require("dapui").open()
 end)
 map("n", "<Leader>dc", function()
-  require("dapui").close()
+    require("dapui").close()
 end)
 
 -- 7. bind <leader>wt to open vimwiki index;

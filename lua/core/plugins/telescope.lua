@@ -8,7 +8,7 @@ local M = {
     "nvim-telescope/telescope-symbols.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
     "ptethng/telescope-makefile",
-    { "nvim-telescope/telescope-fzf-native.nvim", enabled = conf.telescope.fzf_native.enable, build = "make" },
+    { "nvim-telescope/telescope-fzf-native.nvim", enabled = conf.telescope.fzf_native.enable, build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build" },
   },
   keys = {
     -- Search stuff
