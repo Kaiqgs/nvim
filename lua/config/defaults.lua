@@ -27,6 +27,8 @@ return {
       space = "·",
       nbsp = "␣",
     },
+    wrapscan = true, -- Searches wrap around the end of the file
+    incsearch = false, -- do incremental searching
     mouse = "nv", -- enable mouse see :h mouse
     number = true, -- set numbered lines
     pumblend = 10, -- Popup blend

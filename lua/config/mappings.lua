@@ -8,6 +8,12 @@ local map = vim.keymap.set
 -- map("n", "k", "i", { noremap = true })
 -- map("n", "l", "o", { noremap = true })
 
+-- Insert:
+map("i", "<C-I>", function()
+    local keys = vim.api.nvim_replace_termcodes("<Esc>cc", true, false, true)
+    vim.api.nvim_feedkeys(keys, "n", true)
+end, { desc = "[C]lear [I]ndent" })
+
 -- Actions:
 map("n", "<bs>", "<c-^>'\"zz", { desc = "Toggle buffer" })
 map("n", "<tab>", "<Cmd>bprevious<cr>", { desc = "Previous buffer" })
@@ -20,6 +26,10 @@ map("n", "<leader>e", "<Cmd>Explore<cr>", { desc = "Open explore" })
 map("n", "<leader>q", "<Cmd>bd<cr>", { desc = "Close buffer" })
 map("n", "<leader>cf", "<Cmd>CloseFloatingWindows<cr>", { desc = "[C]lose [F]loating Windows" })
 map("n", "<leader>cw", "", { desc = "[C]urrent [W]orking Directory" })
+map("n", "<leader>te", "<Cmd>terminal<cr>", { desc = "[T][e]rminal" })
+map("n", "<C-I>", function()
+    vim.api.nvim_feedkeys("cc", "n", true)
+end, { desc = "[C]lear [I]ndent" })
 
 --auto-save
 map("n", "<leader>as", "<Cmd>ASToggle<CR>", { desc = "Toggle [A]uto-[S]ave" })
