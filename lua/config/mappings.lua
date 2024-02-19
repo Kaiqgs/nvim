@@ -30,6 +30,7 @@ map("n", "<leader>te", "<Cmd>terminal<cr>", { desc = "[T][e]rminal" })
 map("n", "<C-I>", function()
     vim.api.nvim_feedkeys("cc", "n", true)
 end, { desc = "[C]lear [I]ndent" })
+map("n", "<leader>nh", "<Cmd>noh<cr>", { desc = "[N]o [H]ighlight" })
 
 --auto-save
 map("n", "<leader>as", "<Cmd>ASToggle<CR>", { desc = "Toggle [A]uto-[S]ave" })
