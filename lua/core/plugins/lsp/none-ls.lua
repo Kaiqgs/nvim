@@ -4,22 +4,23 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 nls.setup({
   sources = {
     nls.builtins.formatting.stylua.with({ extra_args = { "--indent-type", "Spaces", "--indent-width", "4" } }),
-    nls.builtins.diagnostics.eslint_d,
-    nls.builtins.formatting.prettier.with({
-      extra_args = { "--single-quote", "false" },
-    }),
+    require('none-ls.diagnostics.eslint_d'),
+    nls.builtins.formatting.prettierd,
+    -- .with({
+    --   extra_args = { "--single-quote", "true", "--no-bracket-spacing" },
+    -- }),
     nls.builtins.formatting.terraform_fmt,
     nls.builtins.formatting.black,
     nls.builtins.formatting.goimports,
     nls.builtins.formatting.gofumpt,
     nls.builtins.diagnostics.staticcheck,
-    nls.builtins.formatting.latexindent.with({
-      extra_args = { "-g", "/dev/null" }, -- https://github.com/cmhughes/latexindent.pl/releases/tag/V3.9.3
-    }),
-    nls.builtins.code_actions.shellcheck,
+    --TODO: remove unused packages below
+    -- nls.builtins.formatting.latexindent,
+    -- nls.builtins.code_actions.shellcheck,
+    -- nls.builtins.diagnostics.ruff,
+
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,
-    nls.builtins.diagnostics.ruff,
   },
   on_attach = function(client, bufnr)
     vim.keymap.set(

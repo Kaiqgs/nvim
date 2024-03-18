@@ -7,6 +7,9 @@ return {
     dependencies = {
       { "onsails/lspkind-nvim" },
       { "folke/neodev.nvim", config = true, lazy = true, ft = "lua" },
+            "jay-babu/mason-null-ls.nvim",
+            "nvimtools/none-ls.nvim",
+           "nvimtools/none-ls-extras.nvim",
     },
     config = function()
       require("core.plugins.lsp.lsp")

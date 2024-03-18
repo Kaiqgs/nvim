@@ -18,7 +18,9 @@ local M = {
         "requirements.yml",
         "pyrightconfig.json",
         "pyproject.toml",
+        ".luarc.json"
       },
+      manual_mode = true,
       -- detection_methods = { "lsp", "pattern" },
       detection_methods = { "pattern" },
     })

@@ -21,7 +21,7 @@ local dap_hydra = Hydra({
     },
   },
   name = "dap",
-  mode = { "n", "x" },
+  mode = { "n" },
   body = "<leader>d",
   heads = {
     { "C", "<cmd>lua require('dapui').close()<cr>:DapVirtualTextForceRefresh<cr>", { silent = true } },

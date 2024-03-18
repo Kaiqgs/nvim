@@ -9,15 +9,13 @@ local map = vim.keymap.set
 -- map("n", "l", "o", { noremap = true })
 
 -- Insert:
-map("i", "<C-I>", function()
-    local keys = vim.api.nvim_replace_termcodes("<Esc>cc", true, false, true)
-    vim.api.nvim_feedkeys(keys, "n", true)
-end, { desc = "[C]lear [I]ndent" })
+map("i", "<C-I>", "<Esc>cc", { desc = "[C]lear [I]ndent" })
 
 -- Actions:
 map("n", "<bs>", "<c-^>'\"zz", { desc = "Toggle buffer" })
-map("n", "<tab>", "<Cmd>bprevious<cr>", { desc = "Previous buffer" })
-map("n", "<S-tab>", "<Cmd>bnext<cr>", { desc = "Next buffer" })
+map("n", "<tab>", "<Cmd>Telescope buffers<cr>", { desc = "Previous buffer" })
+-- map("n", "<tab>", "<Cmd>bprevious<cr>", { desc = "Previous buffer" })
+-- map("n", "<S-tab>", "<Cmd>bnext<cr>", { desc = "Next buffer" })
 map("v", "=", "gq", { desc = "Format selection" })
 map("n", "<leader>wa", "<Cmd>tabd w<cr><Cmd>wa<cr>", { desc = "Write all buffers" })
 map("n", "<leader>f", vim.lsp.buf.format, { desc = "Format buffer" })
@@ -27,17 +25,23 @@ map("n", "<leader>q", "<Cmd>bd<cr>", { desc = "Close buffer" })
 map("n", "<leader>cf", "<Cmd>CloseFloatingWindows<cr>", { desc = "[C]lose [F]loating Windows" })
 map("n", "<leader>cw", "", { desc = "[C]urrent [W]orking Directory" })
 map("n", "<leader>te", "<Cmd>terminal<cr>", { desc = "[T][e]rminal" })
-map("n", "<C-I>", function()
-    vim.api.nvim_feedkeys("cc", "n", true)
-end, { desc = "[C]lear [I]ndent" })
+map("n","<C-I>", "cc", { desc = "[C]lear [I]ndent"})
 map("n", "<leader>nh", "<Cmd>noh<cr>", { desc = "[N]o [H]ighlight" })
+map("n", "<leader>S", "<Cmd>Spectre<cr>", { desc = "[S]pectre"})
+map("n", "<leader>ec", "<Cmd>Copilot enable<cr>", { desc = "[E]nable [C]opilot" })
+
+-- project nvim
+map("n", "<leader>pr", "<Cmd>ProjectRoot<cr>", {desc ="Set [P]roject [R]oot"})
 
 --auto-save
 map("n", "<leader>as", "<Cmd>ASToggle<CR>", { desc = "Toggle [A]uto-[S]ave" })
 
 -- no-yanking
-map("n", "<leader>p", [["_dP]], { desc = "Paste without yanking" })
-map("n", "<leader>d", [["_d]], { desc = "Delete without yanking" })
+map("x", "<leader>p", [["_dP]], { desc = "[P]aste without yanking" })
+map("x", "<leader>d", [["_d]], { desc = "[D]elete without yanking" })
+map("x", "<leader>c", [["_c]], { desc = "[C]hange without yanking"})
+map("x", "<leader>cc", [["_cc"]], { desc = "[C]hange [C]urrent Line"})
+map("x", "<leader>dd", [["_dd]], { desc = "[D]elete [D]irect" })
 
 -- toggles
 map("n", "<leader>ta", "<Cmd>ASToggle<CR>", { desc = "[T]oggle [A]uto-save" })

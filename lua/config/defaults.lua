@@ -101,6 +101,10 @@ return {
       -- https://github.com/ThePrimeagen/harpoon
       enable = true,
       key_mappings = function(harpoon)
+        -- vim.keymap.set("n")
+        vim.keymap.set("n", "<leader>hcl", function ()
+            harpoon:list():clear()
+        end)
         vim.keymap.set("n", "<leader>a", function()
           harpoon:list():append()
         end, { desc = "Append to harpoon" })
