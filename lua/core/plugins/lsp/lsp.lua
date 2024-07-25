@@ -27,6 +27,9 @@ for _, lsp in ipairs(conf.lsp_servers) do
       redhat = { telemetry = { enabled = false } },
       texlab = lsp_settings.tex,
       yaml = lsp_settings.yaml,
+      glslls = lsp_settings.glsl,
+      clangd = lsp_settings.clangd,
+      -- arduino_language_server = lsp_settings.arduino_language_server,
     },
   })
 end

@@ -13,7 +13,7 @@ return {
     dir = fn.stdpath("data") .. "/swp", -- swap file directory
     expandtab = true, -- use spaces instead of tabs
     formatoptions = "jcroqlnt", -- tcqj
-    grepprg = "rg --vimgrep --smart-case --", -- use rg instead of grep
+    grepprg = "rg --vimgrep --smart-case --pcre2 --", -- use rg instead of grep
     hidden = true, -- Enable modified buffers in background
     history = 1000, -- Use the 'history' option to set the number of lines from command mode that are remembered.
     ignorecase = true, -- ignore case in search patterns
@@ -106,7 +106,7 @@ return {
             harpoon:list():clear()
         end)
         vim.keymap.set("n", "<leader>a", function()
-          harpoon:list():append()
+          harpoon:list():add()
         end, { desc = "Append to harpoon" })
         vim.keymap.set("n", "<C-e>", function()
           harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -324,6 +324,9 @@ return {
     "tsserver",
     "typst_lsp",
     "yamlls",
+    "glslls",
+    "clangd",
+    -- "arduino_language_server"
   },
 
   -- Tools that should be installed by Mason

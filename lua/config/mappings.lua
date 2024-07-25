@@ -1,12 +1,126 @@
 local utils = require("utils.functions")
+local inspect = require("utils.inspect")
 -- local dap = require("dap")
 local map = vim.keymap.set
+
+--- Lua snip suggested
+vim.api.nvim_set_keymap("i", "<C-n>", "<Plug>luasnip-jump-next", {})
+vim.api.nvim_set_keymap("i", "<C-p>", "<Plug>luasnip-jump-prev", {})
+---
+
+--- two functions below are the worst code Ive ever written
+local function todo_abstract()
+    local luasnip = require("luasnip")
+    -- luasnip.load()
+    local snippets = luasnip.get_snippets("all")
+    local itercount = 0
+    local mysnip
+    for _, snip in pairs(snippets) do
+        if snip.name == "require_common" then
+            mysnip = snip
+            break
+        end
+        -- print(snipkey)
+        -- print(snip.name or "namelessbitch")
+        -- -- print(inspect.inspect(snip))
+        -- print("a-----------a")
+        itercount = itercount + 1
+    end
+    if not mysnip then
+        print("warn: no snip")
+        return
+    end
+    local pos = vim.fn.getpos(".")
+    local group = "requirx"
+    luasnip.snip_expand(mysnip, {
+        pos = { 0, 0 },
+    })
+    vim.api.nvim_create_augroup(group, {
+        clear = true,
+    })
+    vim.api.nvim_create_autocmd("InsertEnter", {
+        group = group,
+        callback = function()
+            vim.api.nvim_create_autocmd("InsertLeave", {
+                group = group,
+                callback = function()
+                    pos[2] = pos[2] + 1
+                    -- print("bro got back? w/ pos")
+                    -- print(inspect.inspect(pos))
+                    vim.fn.setpos(".", pos)
+                    vim.api.nvim_del_augroup_by_name(group)
+                end,
+            })
+        end,
+    })
+end
+
+local function copy_paste_changed()
+    local luasnip = require("luasnip")
+    -- luasnip.load()
+    local snippets = luasnip.get_snippets("all")
+    local itercount = 0
+    local mysnip
+    for _, snip in pairs(snippets) do
+        if snip.name == "require" then
+            mysnip = snip
+            break
+        end
+        -- print(snipkey)
+        -- print(snip.name or "namelessbitch")
+        -- -- print(inspect.inspect(snip))
+        -- print("a-----------a")
+        itercount = itercount + 1
+    end
+    if not mysnip then
+        print("warn: no snip")
+        return
+    end
+    local pos = vim.fn.getpos(".")
+    local group = "requirx"
+    luasnip.snip_expand(mysnip, {
+        pos = { 0, 0 },
+    })
+    vim.api.nvim_create_augroup(group, {
+        clear = true,
+    })
+    vim.api.nvim_create_autocmd("InsertEnter", {
+        group = group,
+        callback = function()
+            vim.api.nvim_create_autocmd("InsertLeave", {
+                group = group,
+                callback = function()
+                    vim.api.nvim_create_autocmd("InsertEnter", {
+                        group = group,
+                        callback = function()
+                            vim.api.nvim_create_autocmd("InsertLeave", {
+                                group = group,
+                                callback = function()
+                                    pos[2] = pos[2] + 1
+                                    -- print("bro got back? w/ pos")
+                                    -- print(inspect.inspect(pos))
+                                    vim.fn.setpos(".", pos)
+                                    vim.api.nvim_del_augroup_by_name(group)
+                                end,
+                            })
+                        end,
+                    })
+                end,
+            })
+        end,
+    })
+end
 
 -- colemak dh remap
 -- map("n", "h", "n", { noremap = true })
 -- map("n", "j", "e", { noremap = true })
 -- map("n", "k", "i", { noremap = true })
 -- map("n", "l", "o", { noremap = true })
+
+--- super crazy lua require
+-- map("i", "<C-X>", "<Esc>gg<S-O>re<Tab><cr>", { desc = "Lua Require"})
+map("i", "<C-X>", todo_abstract, { desc = "Lua Common Require" })
+map("i", "<C-Z>", copy_paste_changed, { desc = "Lua Require" })
 
 -- Insert:
 map("i", "<C-I>", "<Esc>cc", { desc = "[C]lear [I]ndent" })
@@ -25,13 +139,13 @@ map("n", "<leader>q", "<Cmd>bd<cr>", { desc = "Close buffer" })
 map("n", "<leader>cf", "<Cmd>CloseFloatingWindows<cr>", { desc = "[C]lose [F]loating Windows" })
 map("n", "<leader>cw", "", { desc = "[C]urrent [W]orking Directory" })
 map("n", "<leader>te", "<Cmd>terminal<cr>", { desc = "[T][e]rminal" })
-map("n","<C-I>", "cc", { desc = "[C]lear [I]ndent"})
+map("n", "<C-I>", "cc", { desc = "[C]lear [I]ndent" })
 map("n", "<leader>nh", "<Cmd>noh<cr>", { desc = "[N]o [H]ighlight" })
-map("n", "<leader>S", "<Cmd>Spectre<cr>", { desc = "[S]pectre"})
+map("n", "<leader>S", "<Cmd>Spectre<cr>", { desc = "[S]pectre" })
 map("n", "<leader>ec", "<Cmd>Copilot enable<cr>", { desc = "[E]nable [C]opilot" })
 
 -- project nvim
-map("n", "<leader>pr", "<Cmd>ProjectRoot<cr>", {desc ="Set [P]roject [R]oot"})
+map("n", "<leader>pr", "<Cmd>ProjectRoot<cr>", { desc = "Set [P]roject [R]oot" })
 
 --auto-save
 map("n", "<leader>as", "<Cmd>ASToggle<CR>", { desc = "Toggle [A]uto-[S]ave" })
@@ -39,8 +153,8 @@ map("n", "<leader>as", "<Cmd>ASToggle<CR>", { desc = "Toggle [A]uto-[S]ave" })
 -- no-yanking
 map("x", "<leader>p", [["_dP]], { desc = "[P]aste without yanking" })
 map("x", "<leader>d", [["_d]], { desc = "[D]elete without yanking" })
-map("x", "<leader>c", [["_c]], { desc = "[C]hange without yanking"})
-map("x", "<leader>cc", [["_cc"]], { desc = "[C]hange [C]urrent Line"})
+map("x", "<leader>c", [["_c]], { desc = "[C]hange without yanking" })
+map("x", "<leader>cc", [["_cc"]], { desc = "[C]hange [C]urrent Line" })
 map("x", "<leader>dd", [["_dd]], { desc = "[D]elete [D]irect" })
 
 -- toggles
