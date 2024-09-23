@@ -10,7 +10,7 @@ local function colyseus_froom_root()
         args = { "ci/server.sh" },
         "${workspaceFolder}/**",
         "!**/node_modules/**",
-        },
+        }
 end
 
 function M.ng_test_config()
