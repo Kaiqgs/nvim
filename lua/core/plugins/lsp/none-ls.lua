@@ -9,16 +9,7 @@ nls.setup({
     -- .with({
     --   extra_args = { "--single-quote", "true", "--no-bracket-spacing" },
     -- }),
-    nls.builtins.formatting.terraform_fmt,
     nls.builtins.formatting.black,
-    nls.builtins.formatting.goimports,
-    nls.builtins.formatting.gofumpt,
-    nls.builtins.diagnostics.staticcheck,
-    --TODO: remove unused packages below
-    -- nls.builtins.formatting.latexindent,
-    -- nls.builtins.code_actions.shellcheck,
-    -- nls.builtins.diagnostics.ruff,
-
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,
   },

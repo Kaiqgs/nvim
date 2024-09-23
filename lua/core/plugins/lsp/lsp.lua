@@ -33,15 +33,3 @@ for _, lsp in ipairs(conf.lsp_servers) do
     },
   })
 end
-
-vim.api.nvim_create_user_command(
-  "LtexLang",
-  "lua require('core.plugins.lsp.utils').set_ltex_lang(<q-args>)",
-  { nargs = 1, desc = "Set ltex-ls language" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>mx",
-  "<cmd>lua require('core.plugins.lsp.utils').set_ltex_lang(vim.g.config.plugins.ltex.additional_lang)<cr>",
-  { desc = "Set ltex-ls language" }
-)

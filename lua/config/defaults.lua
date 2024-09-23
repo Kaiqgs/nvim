@@ -93,10 +93,6 @@ return {
       -- choose between "git-conflict" and "diffview" or "both"
       merge_conflict_tool = "git-conflict",
     },
-    gopher = {
-      -- https://github.com/olexsmir/gopher.nvim
-      enable = false,
-    },
     harpoon = {
       -- https://github.com/ThePrimeagen/harpoon
       enable = true,
@@ -255,10 +251,6 @@ return {
       -- enable greping in hidden files
       grep_hidden = true,
     },
-    tex = {
-      vimtex_compiler_method = "tectonic", -- Tool to compile LaTex files
-      vimtex_view_method = "skim", -- Tool to view PDFs generated from LaTex
-    },
   },
 
   theme = {
@@ -284,27 +276,21 @@ return {
   -- treesitter parsers to be installed
   -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   treesitter_ensure_installed = {
+    "c",
     "bash",
     "cmake",
     "css",
     "dockerfile",
-    "go",
-    "hcl",
     "html",
-    "java",
     "javascript",
     "json",
-    "kotlin",
-    "ledger",
     "lua",
     "markdown",
     "markdown_inline",
     "query",
     "python",
     "regex",
-    "terraform",
     "toml",
-    "vim",
     "yaml",
   },
 
@@ -313,20 +299,13 @@ return {
     "bashls",
     "dockerls",
     "jsonls",
-    -- "gopls",
-    "ltex",
     "marksman",
     "pyright",
     "lua_ls",
-    "tailwindcss",
-    "terraformls",
-    "texlab",
-    "tsserver",
-    "typst_lsp",
+    "ts_ls",
     "yamlls",
     "glslls",
     "clangd",
-    -- "arduino_language_server"
   },
 
   -- Tools that should be installed by Mason
@@ -339,19 +318,10 @@ return {
     -- Linter
     "eslint_d",
     "shellcheck",
-    "tflint",
     "yamllint",
     "ruff",
     -- DAP
     "debugpy",
     "codelldb",
-    -- Go
-    "gofumpt",
-    "goimports",
-    "gomodifytags",
-    "gotests",
-    "iferr",
-    "impl",
-    "staticcheck",
   },
 }

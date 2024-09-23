@@ -13,7 +13,6 @@ local M = {
       patterns = {
         ".git",
         "package.json",
-        ".terraform",
         "go.mod",
         "requirements.yml",
         "pyrightconfig.json",

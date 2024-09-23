@@ -45,9 +45,15 @@ local function todo_abstract()
                 group = group,
                 callback = function()
                     pos[2] = pos[2] + 1
+                    -- pos[3] = pos[3] + 1
                     -- print("bro got back? w/ pos")
                     -- print(inspect.inspect(pos))
+                    vim.api.nvim_cmd({ cmd = "startinsert" }, {})
                     vim.fn.setpos(".", pos)
+
+                    -- vim.cmd("startinsert")
+                    -- vim.api.nvim_parse_cmd("startinsert", {})
+                    -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i"), )
                     vim.api.nvim_del_augroup_by_name(group)
                 end,
             })
@@ -99,6 +105,7 @@ local function copy_paste_changed()
                                     pos[2] = pos[2] + 1
                                     -- print("bro got back? w/ pos")
                                     -- print(inspect.inspect(pos))
+                                    vim.api.nvim_cmd({ cmd = "startinsert" }, {})
                                     vim.fn.setpos(".", pos)
                                     vim.api.nvim_del_augroup_by_name(group)
                                 end,
@@ -239,6 +246,20 @@ end)
 map("n", "<Leader>dc", function()
     require("dapui").close()
 end)
+
+--- LuaPad
+
+map("n", "<Leader>L", function()
+    require("luapad").toggle()
+end)
+
+map("n", "<Leader>lu", "<Cmd>Luapad<CR>", { desc = "LuaPad Eval" })
+
+-- map("n",  "<Leader>Li", function()
+--     local luapad = require("luapad")
+--     local user_input = vim.fn.input("LuaPad: ")
+--     luapad.
+-- end)
 
 -- 7. bind <leader>wt to open vimwiki index;
 -- map("n", "<leader>wt", "<Plug>VimwikiTabIndex", { silent = true })

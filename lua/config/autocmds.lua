@@ -32,40 +32,7 @@ api.nvim_create_autocmd("Filetype", {
     end,
 })
 
--- detect typst filetype
-api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = { "*.typ" },
-    callback = function()
-        vim.api.nvim_command("set filetype=typst")
-    end,
-})
 
--- detect terraform
--- https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md
--- expects a terraform filetype and not a tf filetype
-api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = { "*.tf" },
-    callback = function()
-        vim.api.nvim_command("set filetype=terraform")
-    end,
-})
-
--- detect terraform vars
-api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    pattern = "terraform-vars",
-    callback = function()
-        vim.api.nvim_command("set filetype=hcl")
-    end,
-})
-
--- fix terraform and hcl comment string
-api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-    group = vim.api.nvim_create_augroup("FixTerraformCommentString", { clear = true }),
-    callback = function(ev)
-        vim.bo[ev.buf].commentstring = "# %s"
-    end,
-    pattern = { "*tf" },
-})
 
 -- Highlight on yank
 api.nvim_create_autocmd("TextYankPost", {

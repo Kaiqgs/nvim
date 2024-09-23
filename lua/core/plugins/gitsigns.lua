@@ -116,7 +116,7 @@ local default_config = {
             map("n", "<leader>gB", gs.blame, "Blame")
             map("n", "<leader>gb", gs.toggle_current_line_blame, "Blame line")
             map("n", "<leader>gD", gs.diffthis, "Diff")
-            map("n", "<leader>gd", gs.toggle_deleted, "Show deleted")
+            map("n", "<leader>ge", gs.toggle_deleted, "toggle [G]it [E]rased")
             map({ "o", "x" }, "gH", "<cmd><C-U>Gitsigns select_hunk<cr>", "Select hunk")
 
             map("n", "]c", gs.next_hunk, "Git next hunk")
