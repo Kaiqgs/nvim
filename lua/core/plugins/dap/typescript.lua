@@ -8,8 +8,21 @@ local function colyseus_froom_root()
         cwd = vim.fn.getcwd(),
         runtimeExecutable = "bash",
         args = { "ci/server.sh" },
+        "${workspaceFolder}/**",
+        "!**/node_modules/**",
+        },
+end
+
+function M.ng_test_config()
+    return {
+        name = "Launch Bash Test",
+        type = "pwa-node",
+        request = "launch",
+        program = "${file}",
+        cwd = vim.fn.getcwd(),
+        runtimeExecutable = "bash",
+        args = { "test.sh" },
         sourceMaps = true,
-        protocol = "inspector",
         skipFiles = { "<node_internals>/**", "node_modules/**" },
         resolveSourceMapLocations = {
             "${workspaceFolder}/**",
@@ -19,6 +32,7 @@ local function colyseus_froom_root()
         },
     }
 end
+
 local M = {
     setup = function()
         local osname = vim.loop.os_uname().sysname
@@ -50,21 +64,21 @@ local M = {
                 },
             },
             javascript.bash_config(),
+            M.ng_test_config(),
         }
-        dap.listeners.after["event_terminate"]["ts-plug"] = function(session, body)
-            prints"do i exist?"
-            local op = io.popen("lsof -i :2567")
-            op:read()
-            local data = op:read()
-            op:close()
-            local pid = data:gmatch("%d+")()
-            if pid then
-                local killop = io.popen(("kill -9 %s"):format(pid))
-                print("killing op")
-                print(killop:read("*a"))
-                killop:close()
-            end
-        end
+--         dap.listeners.after["event_terminate"]["ts-plug"] = function(session, body)
+--             local op = io.popen("lsof -i :2567")
+--             op:read()
+--             local data = op:read()
+--             op:close()
+--             local pid = data:gmatch("%d+")()
+--             if pid then
+--                 local killop = io.popen(("kill -9 %s"):format(pid))
+--                 print("killing op")
+--                 print(killop:read("*a"))
+--                 killop:close()
+--             end
+--         end
     end,
 }
 return M

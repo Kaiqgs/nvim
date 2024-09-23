@@ -8,7 +8,9 @@ nls.setup({
     nls.builtins.formatting.prettierd,
     -- .with({
     --   extra_args = { "--single-quote", "true", "--no-bracket-spacing" },
-    -- }),
+    --   extra_args = { "--single-quote", "true", "--no-bracket-spacing", "--tab-width", "2", "--use-tabs", "false" },
+    -- })
+
     nls.builtins.formatting.black,
     nls.builtins.code_actions.gitsigns,
     nls.builtins.formatting.shfmt,

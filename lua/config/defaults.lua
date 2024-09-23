@@ -4,6 +4,7 @@ return {
   options = {
     -- auto_save = true,
     -- autoformat_active = false,
+    -- nonels_supress_issue58 = true,
     backup = false, -- creates a backup file
     clipboard = "unnamedplus", -- keep in sync with the system clipboard
     completeopt = "menu,menuone,noselect", -- A comma separated list of options for Insert mode completion
@@ -86,7 +87,7 @@ return {
     -- https://github.com/zbirenbaum/copilot.lua
     copilot = {
       enable = true,
-      disable_autostart = false,
+      disable_autostart = true,
     },
     git = {
       -- which tool to use for handling git merge conflicts
