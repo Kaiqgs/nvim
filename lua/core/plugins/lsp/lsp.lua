@@ -27,18 +27,9 @@ for _, lsp in ipairs(conf.lsp_servers) do
       redhat = { telemetry = { enabled = false } },
       texlab = lsp_settings.tex,
       yaml = lsp_settings.yaml,
+      glslls = lsp_settings.glsl,
+      clangd = lsp_settings.clangd,
+      -- arduino_language_server = lsp_settings.arduino_language_server,
     },
   })
 end
-
-vim.api.nvim_create_user_command(
-  "LtexLang",
-  "lua require('core.plugins.lsp.utils').set_ltex_lang(<q-args>)",
-  { nargs = 1, desc = "Set ltex-ls language" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>mx",
-  "<cmd>lua require('core.plugins.lsp.utils').set_ltex_lang(vim.g.config.plugins.ltex.additional_lang)<cr>",
-  { desc = "Set ltex-ls language" }
-)

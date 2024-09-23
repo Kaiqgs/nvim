@@ -54,18 +54,18 @@ local function configure_debuggers()
   require("core.plugins.dap.javascript").setup()
 end
 
-local function create_mapping()
-  local wk = require("which-key")
-  wk.register({
-    d = { "Debug" },
-  }, { prefix = "<leader>", mode = "n", {} })
-end
+-- local function create_mapping()
+--   local wk = require("which-key")
+--   wk.register({
+--     d = { "Debug" },
+--   }, { prefix = "<leader>", mode = "n", {} })
+-- end
 
 function M.setup()
   configure() -- Configuration
   configure_exts() -- Extensions
   configure_debuggers() -- Debugger
-  create_mapping() -- which-key mapping
+  -- create_mapping() -- which-key mapping
   require("core.plugins.hydra.dap") -- enable Hydra head
 end
 

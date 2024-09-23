@@ -48,25 +48,9 @@ M.get_python_path = function(workspace)
   return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
 end
 
----Force a specific language for ltex-ls
----@param lang string
-M.set_ltex_lang = function(lang)
-  -- local clients = vim.lsp.buf_get_clients(0)
-  local clients = vim.lsp.get_active_clients()
-
-  for _, client in ipairs(clients) do
-    if client.name == "ltex" then
-      utils.notify("Set ltex-ls lang to " .. lang, vim.log.levels.INFO, "utils.functions")
-      client.config.settings.ltex.language = lang
-      vim.lsp.buf_notify(0, "workspace/didChangeConfiguration", { settings = client.config.settings })
-      return
-    end
-  end
-end
 
 M.get_LSP_clients = function()
-  -- return vim.lsp.buf_get_clients(0)
-  return vim.lsp.get_active_clients()
+  return vim.lsp.get_clients()
 end
 
 return M

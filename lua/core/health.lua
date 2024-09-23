@@ -79,17 +79,6 @@ M.check = function()
     end
   end
 
-  if not utils.isExecutableAvailable(tex.vimtex_compiler_method) then
-    _warn(string.format(exec_not_found_template, tex.vimtex_compiler_method, "to compile LaTex files"))
-  else
-    _ok(string.format(exec_found_template, tex.vimtex_compiler_method))
-  end
-
-  if not utils.isExecutableAvailable(tex.vimtex_view_method) then
-    _warn(string.format(exec_not_found_template, tex.vimtex_view_method, "to view compiled LaTex files (PDFs)"))
-  else
-    _ok(string.format(exec_found_template, tex.vimtex_view_method))
-  end
 
   if not utils.isExecutableAvailable("python") then
     if not utils.isExecutableAvailable("python3") then
