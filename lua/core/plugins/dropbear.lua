@@ -1,6 +1,6 @@
 local utils = require("utils.functions")
 
 return {
-  "Bekaboo/dropbar.nvim",
-  enabled = utils.isNeovimVersionsatisfied(10),
+	"Bekaboo/dropbar.nvim",
+	enabled = utils.isNeovimVersionsatisfied(10),
 }

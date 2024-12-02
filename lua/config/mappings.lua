@@ -10,112 +10,112 @@ vim.api.nvim_set_keymap("i", "<C-p>", "<Plug>luasnip-jump-prev", {})
 
 --- two functions below are the worst code Ive ever written
 local function todo_abstract()
-    local luasnip = require("luasnip")
-    -- luasnip.load()
-    local snippets = luasnip.get_snippets("all")
-    local itercount = 0
-    local mysnip
-    for _, snip in pairs(snippets) do
-        if snip.name == "require_common" then
-            mysnip = snip
-            break
-        end
-        -- print(snipkey)
-        -- print(snip.name or "namelessbitch")
-        -- -- print(inspect.inspect(snip))
-        -- print("a-----------a")
-        itercount = itercount + 1
-    end
-    if not mysnip then
-        print("warn: no snip")
-        return
-    end
-    local pos = vim.fn.getpos(".")
-    local group = "requirx"
-    luasnip.snip_expand(mysnip, {
-        pos = { 0, 0 },
-    })
-    vim.api.nvim_create_augroup(group, {
-        clear = true,
-    })
-    vim.api.nvim_create_autocmd("InsertEnter", {
-        group = group,
-        callback = function()
-            vim.api.nvim_create_autocmd("InsertLeave", {
-                group = group,
-                callback = function()
-                    pos[2] = pos[2] + 1
-                    -- pos[3] = pos[3] + 1
-                    -- print("bro got back? w/ pos")
-                    -- print(inspect.inspect(pos))
-                    vim.api.nvim_cmd({ cmd = "startinsert" }, {})
-                    vim.fn.setpos(".", pos)
+	local luasnip = require("luasnip")
+	-- luasnip.load()
+	local snippets = luasnip.get_snippets("lua")
+	local itercount = 0
+	local mysnip
+	for _, snip in pairs(snippets) do
+		if snip.name == "require_common" then
+			mysnip = snip
+			break
+		end
+		-- print(snipkey)
+		-- print(snip.name or "namelessbitch")
+		-- -- print(inspect.inspect(snip))
+		-- print("a-----------a")
+		itercount = itercount + 1
+	end
+	if not mysnip then
+		print("warn: no snip")
+		return
+	end
+	local pos = vim.fn.getpos(".")
+	local group = "requirx"
+	luasnip.snip_expand(mysnip, {
+		pos = { 0, 0 },
+	})
+	vim.api.nvim_create_augroup(group, {
+		clear = true,
+	})
+	vim.api.nvim_create_autocmd("InsertEnter", {
+		group = group,
+		callback = function()
+			vim.api.nvim_create_autocmd("InsertLeave", {
+				group = group,
+				callback = function()
+					pos[2] = pos[2] + 1
+					-- pos[3] = pos[3] + 1
+					-- print("bro got back? w/ pos")
+					-- print(inspect.inspect(pos))
+					vim.api.nvim_cmd({ cmd = "startinsert" }, {})
+					vim.fn.setpos(".", pos)
 
-                    -- vim.cmd("startinsert")
-                    -- vim.api.nvim_parse_cmd("startinsert", {})
-                    -- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i"), )
-                    vim.api.nvim_del_augroup_by_name(group)
-                end,
-            })
-        end,
-    })
+					-- vim.cmd("startinsert")
+					-- vim.api.nvim_parse_cmd("startinsert", {})
+					-- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i"), )
+					vim.api.nvim_del_augroup_by_name(group)
+				end,
+			})
+		end,
+	})
 end
 
 local function copy_paste_changed()
-    local luasnip = require("luasnip")
-    -- luasnip.load()
-    local snippets = luasnip.get_snippets("all")
-    local itercount = 0
-    local mysnip
-    for _, snip in pairs(snippets) do
-        if snip.name == "require" then
-            mysnip = snip
-            break
-        end
-        -- print(snipkey)
-        -- print(snip.name or "namelessbitch")
-        -- -- print(inspect.inspect(snip))
-        -- print("a-----------a")
-        itercount = itercount + 1
-    end
-    if not mysnip then
-        print("warn: no snip")
-        return
-    end
-    local pos = vim.fn.getpos(".")
-    local group = "requirx"
-    luasnip.snip_expand(mysnip, {
-        pos = { 0, 0 },
-    })
-    vim.api.nvim_create_augroup(group, {
-        clear = true,
-    })
-    vim.api.nvim_create_autocmd("InsertEnter", {
-        group = group,
-        callback = function()
-            vim.api.nvim_create_autocmd("InsertLeave", {
-                group = group,
-                callback = function()
-                    vim.api.nvim_create_autocmd("InsertEnter", {
-                        group = group,
-                        callback = function()
-                            vim.api.nvim_create_autocmd("InsertLeave", {
-                                group = group,
-                                callback = function()
-                                    pos[2] = pos[2] + 1
-                                    -- print("bro got back? w/ pos")
-                                    -- print(inspect.inspect(pos))
-                                    vim.api.nvim_cmd({ cmd = "startinsert" }, {})
-                                    vim.fn.setpos(".", pos)
-                                    vim.api.nvim_del_augroup_by_name(group)
-                                end,
-                            })
-                        end,
-                    })
-                end,
-            })
-        end,
-    })
+	local luasnip = require("luasnip")
+	-- luasnip.load()
+	local snippets = luasnip.get_snippets("lua")
+	local itercount = 0
+	local mysnip
+	for _, snip in pairs(snippets) do
+		if snip.name == "require" then
+			mysnip = snip
+			break
+		end
+		-- print(snipkey)
+		-- print(snip.name or "namelessbitch")
+		-- -- print(inspect.inspect(snip))
+		-- print("a-----------a")
+		itercount = itercount + 1
+	end
+	if not mysnip then
+		print("warn: no snip")
+		return
+	end
+	local pos = vim.fn.getpos(".")
+	local group = "requirx"
+	luasnip.snip_expand(mysnip, {
+		pos = { 0, 0 },
+	})
+	vim.api.nvim_create_augroup(group, {
+		clear = true,
+	})
+	vim.api.nvim_create_autocmd("InsertEnter", {
+		group = group,
+		callback = function()
+			vim.api.nvim_create_autocmd("InsertLeave", {
+				group = group,
+				callback = function()
+					vim.api.nvim_create_autocmd("InsertEnter", {
+						group = group,
+						callback = function()
+							vim.api.nvim_create_autocmd("InsertLeave", {
+								group = group,
+								callback = function()
+									pos[2] = pos[2] + 1
+									-- print("bro got back? w/ pos")
+									-- print(inspect.inspect(pos))
+									vim.api.nvim_cmd({ cmd = "startinsert" }, {})
+									vim.fn.setpos(".", pos)
+									vim.api.nvim_del_augroup_by_name(group)
+								end,
+							})
+						end,
+					})
+				end,
+			})
+		end,
+	})
 end
 
 -- colemak dh remap
@@ -123,6 +123,8 @@ end
 -- map("n", "j", "e", { noremap = true })
 -- map("n", "k", "i", { noremap = true })
 -- map("n", "l", "o", { noremap = true })
+
+-- map("n", "<leader>qa")
 
 --- super crazy lua require
 -- map("i", "<C-X>", "<Esc>gg<S-O>re<Tab><cr>", { desc = "Lua Require"})
@@ -135,13 +137,14 @@ map("i", "<C-I>", "<Esc>cc", { desc = "[C]lear [I]ndent" })
 -- Actions:
 map("n", "<bs>", "<c-^>'\"zz", { desc = "Toggle buffer" })
 map("n", "<tab>", "<Cmd>Telescope buffers<cr>", { desc = "Previous buffer" })
+map("n", "<leader>rt", "<Cmd>Telescope resume<cr>", { desc = "[R]esume [T]elescope", noremap = true, silent = true })
 -- map("n", "<tab>", "<Cmd>bprevious<cr>", { desc = "Previous buffer" })
 -- map("n", "<S-tab>", "<Cmd>bnext<cr>", { desc = "Next buffer" })
 map("v", "=", "gq", { desc = "Format selection" })
 map("n", "<leader>wa", "<Cmd>tabd w<cr><Cmd>wa<cr>", { desc = "Write all buffers" })
 map("n", "<leader>f", vim.lsp.buf.format, { desc = "Format buffer" })
 map("n", "<leader>ww", "<Cmd>w!<cr>", { desc = "Write buffer" })
-map("n", "<leader>e", "<Cmd>Explore<cr>", { desc = "Open explore" })
+map("n", "<leader>e", "<Cmd>Neotree<cr>", { desc = "Open explore" })
 map("n", "<leader>q", "<Cmd>bd<cr>", { desc = "Close buffer" })
 map("n", "<leader>cf", "<Cmd>CloseFloatingWindows<cr>", { desc = "[C]lose [F]loating Windows" })
 map("n", "<leader>cw", "", { desc = "[C]urrent [W]orking Directory" })
@@ -182,11 +185,11 @@ map("n", "<leader>dq", vim.diagnostic.setloclist)
 map("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 map("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
 map("n", "<leader>/", function()
-    -- You can pass additional configuration to telescope to change theme, layout, etc.
-    require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-        winblend = 10,
-        previewer = false,
-    }))
+	-- You can pass additional configuration to telescope to change theme, layout, etc.
+	require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+		winblend = 10,
+		previewer = false,
+	}))
 end, { desc = "[/] Fuzzily search in current buffer]" })
 
 map("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
@@ -196,61 +199,61 @@ map("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earc
 map("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 
 local function DM(m)
-    return string.format("DAP: %s", m)
+	return string.format("DAP: %s", m)
 end
 -- dap
 map("n", "<F4>", function()
-    require("dap").terminate()
+	require("dap").terminate()
 end, { desc = DM("Terminate") })
 
 map("n", "<F5>", function()
-    require("dap").continue()
+	require("dap").continue()
 end, { desc = "Continue" })
 map("n", "<F6>", function()
-    require("dap").step_over()
+	require("dap").step_over()
 end, { desc = " " })
 map("n", "<F7>", function()
-    require("dap").step_into()
+	require("dap").step_into()
 end)
 map("n", "<F8>", function()
-    require("dap").step_out()
+	require("dap").step_out()
 end)
 map("n", "<Leader>b", function()
-    require("dap").toggle_breakpoint()
+	require("dap").toggle_breakpoint()
 end)
 map("n", "<Leader>B", function()
-    require("dap").set_breakpoint()
+	require("dap").set_breakpoint()
 end)
 map("n", "<Leader>lp", function()
-    require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
+	require("dap").set_breakpoint(nil, nil, vim.fn.input("Log point message: "))
 end)
 map("n", "<Leader>dr", function()
-    require("dap").repl.open()
+	require("dap").repl.open()
 end)
 map("n", "<Leader>dl", function()
-    require("dap").run_last()
+	require("dap").run_last()
 end)
 map({ "n", "v" }, "<Leader>dh", function()
-    require("dap.ui.widgets").hover()
+	require("dap.ui.widgets").hover()
 end)
 map({ "n", "v" }, "<Leader>dp", function()
-    require("dap.ui.widgets").preview()
+	require("dap.ui.widgets").preview()
 end)
 map("n", "<Leader>df", function()
-    local widgets = require("dap.ui.widgets")
-    widgets.centered_float(widgets.frames)
+	local widgets = require("dap.ui.widgets")
+	widgets.centered_float(widgets.frames)
 end)
 map("n", "<Leader>do", function()
-    require("dapui").open()
+	require("dapui").open()
 end)
 map("n", "<Leader>dc", function()
-    require("dapui").close()
+	require("dapui").close()
 end)
 
 --- LuaPad
 
 map("n", "<Leader>L", function()
-    require("luapad").toggle()
+	require("luapad").toggle()
 end)
 
 map("n", "<Leader>lu", "<Cmd>Luapad<CR>", { desc = "LuaPad Eval" })

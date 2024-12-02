@@ -1,16 +1,16 @@
 local utils = require("utils.functions")
 local event
 if utils.isNeovimVersionsatisfied(10) then
-  event = "LspAttach"
+	event = "LspAttach"
 else
-  event = "BufReadPre"
+	event = "BufReadPre"
 end
 
 return {
-  "Wansmer/symbol-usage.nvim",
-  event = event,
-  enabled = vim.g.config.plugins.symbol_usage.enable,
-  config = function()
-    require("symbol-usage").setup()
-  end,
+	"Wansmer/symbol-usage.nvim",
+	event = event,
+	enabled = vim.g.config.plugins.symbol_usage.enable,
+	config = function()
+		require("symbol-usage").setup()
+	end,
 }

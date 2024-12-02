@@ -1,4 +1,4 @@
 return {
-  "smjonas/inc-rename.nvim",
-  config = true,
+	"smjonas/inc-rename.nvim",
+	config = true,
 }
