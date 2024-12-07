@@ -86,8 +86,8 @@ return {
 		},
 		-- https://github.com/zbirenbaum/copilot.lua
 		copilot = {
-			enable = true,
-			disable_autostart = false,
+			enable = false,
+			disable_autostart = true,
 		},
 		git = {
 			-- which tool to use for handling git merge conflicts
