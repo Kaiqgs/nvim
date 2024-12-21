@@ -170,7 +170,7 @@ extend(lua_snippets, {
         ls.text_node({ ")" }),
     }),
     ls.snippet({
-        trig = "property",
+        trig = "prop",
         name = "new property",
         desc = "creates a new property",
     }, {
