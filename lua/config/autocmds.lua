@@ -140,7 +140,7 @@ local defold_file_maps = {
 		"lua",
 	},
 	-- TODO: match this with a proper root `game.project` file to avoid golang conflicts (use callback below)
-	defold_go = { "go" },
+	defold_go = {  }, -- "go"
 }
 for lang, defold_correspondents in pairs(defold_file_maps) do
 	for _, file_ext in ipairs(defold_correspondents) do

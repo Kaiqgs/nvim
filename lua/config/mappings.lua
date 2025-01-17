@@ -142,7 +142,7 @@ map("n", "<leader>rt", "<Cmd>Telescope resume<cr>", { desc = "[R]esume [T]elesco
 -- map("n", "<S-tab>", "<Cmd>bnext<cr>", { desc = "Next buffer" })
 map("v", "=", "gq", { desc = "Format selection" })
 map("n", "<leader>wa", "<Cmd>tabd w<cr><Cmd>wa<cr>", { desc = "Write all buffers" })
-map("n", "<leader>f", vim.lsp.buf.format, { desc = "Format buffer" })
+    map("n", "<leader>f", vim.lsp.buf.format, { desc = "Format buffer" })
 map("n", "<leader>ww", "<Cmd>w!<cr>", { desc = "Write buffer" })
 map("n", "<leader>e", "<Cmd>Neotree<cr>", { desc = "Open explore" })
 map("n", "<leader>q", "<Cmd>bd<cr>", { desc = "Close buffer" })
