@@ -20,10 +20,6 @@ local function todo_abstract()
 			mysnip = snip
 			break
 		end
-		-- print(snipkey)
-		-- print(snip.name or "namelessbitch")
-		-- -- print(inspect.inspect(snip))
-		-- print("a-----------a")
 		itercount = itercount + 1
 	end
 	if not mysnip then
@@ -45,15 +41,8 @@ local function todo_abstract()
 				group = group,
 				callback = function()
 					pos[2] = pos[2] + 1
-					-- pos[3] = pos[3] + 1
-					-- print("bro got back? w/ pos")
-					-- print(inspect.inspect(pos))
 					vim.api.nvim_cmd({ cmd = "startinsert" }, {})
 					vim.fn.setpos(".", pos)
-
-					-- vim.cmd("startinsert")
-					-- vim.api.nvim_parse_cmd("startinsert", {})
-					-- vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("i"), )
 					vim.api.nvim_del_augroup_by_name(group)
 				end,
 			})
@@ -72,10 +61,6 @@ local function copy_paste_changed()
 			mysnip = snip
 			break
 		end
-		-- print(snipkey)
-		-- print(snip.name or "namelessbitch")
-		-- -- print(inspect.inspect(snip))
-		-- print("a-----------a")
 		itercount = itercount + 1
 	end
 	if not mysnip then
@@ -103,8 +88,6 @@ local function copy_paste_changed()
 								group = group,
 								callback = function()
 									pos[2] = pos[2] + 1
-									-- print("bro got back? w/ pos")
-									-- print(inspect.inspect(pos))
 									vim.api.nvim_cmd({ cmd = "startinsert" }, {})
 									vim.fn.setpos(".", pos)
 									vim.api.nvim_del_augroup_by_name(group)

@@ -66,7 +66,6 @@ function M.setup()
 	configure_exts() -- Extensions
 	configure_debuggers() -- Debugger
 	-- create_mapping() -- which-key mapping
-	require("core.plugins.hydra.dap") -- enable Hydra head
 end
 
 return M

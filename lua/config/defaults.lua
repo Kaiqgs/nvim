@@ -301,6 +301,8 @@ return {
         "regex",
         "toml",
         "yaml",
+        "gotmpl",
+        "helm",
     },
 
     -- LSPs that should be installed by Mason-lspconfig

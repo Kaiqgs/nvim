@@ -1,3 +1,3 @@
 
-local M = {filetypes={"html"}}
+local M = {filetypes={"templ", "tmpl"}}
 return M

@@ -1,6 +1,5 @@
 local conf = vim.g.config
 local inspect = require("utils.inspect")
-local lspconfig = require("lspconfig")
 local utils = require("core.plugins.lsp.utils")
 local lsp_settings = require("core.plugins.lsp.settings")
 
@@ -28,9 +27,9 @@ end
 for _, lsp in ipairs(conf.lsp_servers) do
 	local settings_or = lsp_settings[lsp] or {}
 	-- assert(lsp_settings[lsp], "No settings found for " .. lsp)
-	print(settings_or.filetypes, lsp)
+	-- print(settings_or.filetypes, lsp)
 	-- print(inspect(lsp_settings))
-	lspconfig[lsp].setup({
+	vim.lsp.config(lsp, {
 		before_init = function(_, config)
 			if lsp == "pyright" then
 				config.settings.python.pythonPath = utils.get_python_path(config.root_dir)
@@ -44,4 +43,5 @@ for _, lsp in ipairs(conf.lsp_servers) do
 		root_dir = settings_or.root_dir,
 		filetypes = settings_or.filetypes,
 	})
+	vim.lsp.enable(lsp)
 end

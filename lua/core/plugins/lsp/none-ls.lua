@@ -4,23 +4,30 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 nls.setup({
     sources = {
         require("none-ls.diagnostics.eslint_d"),
-        nls.builtins.formatting.prettierd,
-        -- .with({
-        --   extra_args = { "--single-quote", "true", "--no-bracket-spacing" },
-        --   extra_args = { "--single-quote", "true", "--no-bracket-spacing", "--tab-width", "2", "--use-tabs", "false" },
-        -- })
-        nls.builtins.formatting.stylua.with({
-            extra_args = {
-                "--config-path",
-                vim.fn.expand("/home/kags/.config/stylua/stylua.toml"),
-                "--indent-type",
-                "Spaces",
-                "--indent-width",
-                "4",
-            },
-        }),
 
-        nls.builtins.formatting.djlint,
+        nls.builtins.formatting.prettierd.with({
+        --   extra_args = { "--single-quote", "true", "--no-bracket-spacing" },
+          extra_args = { "--single-quote", "true", "--no-bracket-spacing", "--tab-width", "2", "--use-tabs", "false" },
+        }),
+        nls.builtins.formatting.prettier.with({
+            filetypes = { "tmpl", "htmldjango" },
+        }),
+        -- nls.builtins.formatting.stylua.with({
+        --     extra_args = {
+        --         "--config-path",
+        --         vim.fn.expand("/home/kags/.config/stylua/stylua.toml"),
+        --         "--indent-type",
+        --         "Spaces",
+        --         "--indent-width",
+        --         "4",
+        --     },
+        -- }),
+
+        -- nls.builtins.formatting.djlint.with({
+        --     filetypes = { "htmldjango", "template", "gotmpl", "go", "html" },
+        --
+        --
+        -- }),
         nls.builtins.formatting.black,
         nls.builtins.code_actions.gitsigns,
         nls.builtins.formatting.shfmt,

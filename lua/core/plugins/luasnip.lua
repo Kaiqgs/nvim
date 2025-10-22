@@ -3,6 +3,7 @@ local function add_defold_go() end
 
 local M = {
 	"L3MON4D3/LuaSnip",
+    version = "v2.*",
 	event = "InsertEnter",
 	dependencies = {
 		"rafamadriz/friendly-snippets",
